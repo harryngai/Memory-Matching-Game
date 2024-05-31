@@ -71,35 +71,34 @@
     const emojis = ['😄', '🙃', '😍', '🤔', '🤩', '😎', '🥳', '🤯'];
     const cards = [...emojis, ...emojis];
     var clickedCard = null;
-		初始化一個名為 'matchedPairs' 的變數，並將其設置為 0
+    初始化一個名為 'matchedPairs' 的變數，並將其設置為 0
 
     // Shuffle the cards array
-		隨機打亂 'cards' 陣列
+    隨機打亂 'cards' 陣列
 
     function toggleGridSelection(event) {
         var grid = event.target; 
         
-				如果 'grid' 與 'clickedCard' 相同或 'grid' 已經包含 'showcard' 類，則返回
-
+        如果 'grid' 與 'clickedCard' 相同或 'grid' 已經包含 'showcard' 類，則返回
 
         grid.classList.add('showcard');
 
         if (clickedCard === null) {
             clickedCard = grid;
         } else {
-          如果當前卡片的文本內容與已點擊卡片的文本內容相同，則表示找到了配對。
-
-					在這種情況下：
-					1. 將配對成功的對數計數器 `matchedPairs` 加一。
-					2. 將 `clickedCard` 設置為 `null`，以便準備進行下一次配對。
-					3. 檢查是否所有的對子都已經配對完成，如果是，則顯示恭喜訊息。
-					
-					如果當前卡片的文本內容與已點擊卡片的文本內容不相同，則表示配對失敗。
-					
-					在這種情況下：
-					1. 使用 `setTimeout` 設置一個延遲，延遲後執行以下操作：
-					   - 移除當前卡片和已點擊卡片的 `showcard` 樣式類，將它們隱藏起來。
-					   - 將 `clickedCard` 設置為 `null`，以便準備進行下一次配對。
+            如果當前卡片的文本內容與已點擊卡片的文本內容相同，則表示找到了配對。
+            
+            在這種情況下：
+            1. 將配對成功的對數計數器 `matchedPairs` 加一。
+            2. 將 `clickedCard` 設置為 `null`，以便準備進行下一次配對。
+            3. 檢查是否所有的對子都已經配對完成，如果是，則顯示恭喜訊息。
+            
+            如果當前卡片的文本內容與已點擊卡片的文本內容不相同，則表示配對失敗。
+            
+            在這種情況下：
+            1. 使用 `setTimeout` 設置一個延遲，延遲後執行以下操作：
+            - 移除當前卡片和已點擊卡片的 `showcard` 樣式類，將它們隱藏起來。
+             - 將 `clickedCard` 設置為 `null`，以便準備進行下一次配對。
         }
     }
 
