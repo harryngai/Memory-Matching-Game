@@ -1,3 +1,125 @@
+<!-- 
+<!DOCTYPE html>
 <html>
-  
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	
+    <title>記憶配對遊戲</title> 
+
+    <style>
+        * {
+            font-family: Arial; 
+        }
+
+        header, footer {
+            background-color: #666666; 
+            color: #FFFFFF; 
+            text-align: center; 
+            padding: 10px; 
+        }
+
+        main {
+            padding: 10px 0; 
+        }
+
+        .grid-container {
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px; 
+            width: 350px;
+            margin: auto; 
+        }
+
+        .grid-item {
+            display: grid; 
+            width: 80px; 
+            height: 80px; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #F0F0F0; 
+            cursor: pointer; 
+            
+            font-size: 60px;
+            text-indent: 1000px;
+            overflow: hidden;
+        }
+
+        .showcard {
+            text-indent: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+	<h1>記憶配對遊戲</h1> 
+</header>
+
+<main>
+    <div class="grid-container" id="grid-container">
+    </div>
+</main>
+
+<footer>
+    <b>單元五 練習五 2024.05.11</b><br />
+	<div id='debugText'>...</div>
+</footer>
+
+<script>
+    const emojis = ['😄', '🙃', '😍', '🤔', '🤩', '😎', '🥳', '🤯'];
+    const cards = [...emojis, ...emojis];
+    var clickedCard = null;
+		初始化一個名為 'matchedPairs' 的變數，並將其設置為 0
+
+    // Shuffle the cards array
+		隨機打亂 'cards' 陣列
+
+    function toggleGridSelection(event) {
+        var grid = event.target; 
+        
+				如果 'grid' 與 'clickedCard' 相同或 'grid' 已經包含 'showcard' 類，則返回
+
+
+        grid.classList.add('showcard');
+
+        if (clickedCard === null) {
+            clickedCard = grid;
+        } else {
+          如果當前卡片的文本內容與已點擊卡片的文本內容相同，則表示找到了配對。
+
+					在這種情況下：
+					1. 將配對成功的對數計數器 `matchedPairs` 加一。
+					2. 將 `clickedCard` 設置為 `null`，以便準備進行下一次配對。
+					3. 檢查是否所有的對子都已經配對完成，如果是，則顯示恭喜訊息。
+					
+					如果當前卡片的文本內容與已點擊卡片的文本內容不相同，則表示配對失敗。
+					
+					在這種情況下：
+					1. 使用 `setTimeout` 設置一個延遲，延遲後執行以下操作：
+					   - 移除當前卡片和已點擊卡片的 `showcard` 樣式類，將它們隱藏起來。
+					   - 將 `clickedCard` 設置為 `null`，以便準備進行下一次配對。
+        }
+    }
+
+    const gridSize = 4;
+    const gridContainer = document.getElementById('grid-container');
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    gridContainer.style.width = `${gridSize * 80 + (gridSize - 1) * 10}px`;
+        
+    for (let i = 0; i < gridSize * gridSize; i++) {
+        const gridItem = document.createElement('div');
+        gridItem.className = 'grid-item';
+        gridItem.textContent = cards[i];
+        gridContainer.appendChild(gridItem);
+    }
+        
+    document.querySelectorAll('.grid-item').forEach(function (grid) {
+        grid.addEventListener('click', toggleGridSelection);
+    });
+</script>
+
+</body>
 </html>
+ -->
